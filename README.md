@@ -59,7 +59,22 @@ To end the program..."END"
 
 # Comprehensive Program Testing
 
-The test in  directory `e2e` can be modified for
-more comprehensive testing.
+Although the program can be run interactively,
+it can also be driven from a program.
 
+Reference: `e2e/e2e_test.go`
+
+```go
+
+func Test_Basic_Ops(t *testing.T) {
+	e := kvstore.RegisterKVStoreCommands()
+	e.ExecByToken("SET", "key0", "value0")
+	checkResult(t, e.ExecByToken("GET", "key0"), "value0")
+	e.ExecByToken("UNSET", "key0")
+	checkResult(t, e.ExecByToken("GET", "key0"), "Nil")
+
+}
+
+
+```
 

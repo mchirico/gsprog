@@ -12,6 +12,15 @@ func checkResult(t *testing.T, result, expected string) {
 	}
 }
 
+func Test_Basic_Ops(t *testing.T) {
+	e := kvstore.RegisterKVStoreCommands()
+	e.ExecByToken("SET", "key0", "value0")
+	checkResult(t, e.ExecByToken("GET", "key0"), "value0")
+	e.ExecByToken("UNSET", "key0")
+	checkResult(t, e.ExecByToken("GET", "key0"), "Nil")
+
+}
+
 func Test_Transaction_Simple(t *testing.T) {
 	e := kvstore.RegisterKVStoreCommands()
 
