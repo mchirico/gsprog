@@ -5,6 +5,12 @@ import (
 	"os"
 )
 
+/*
+	Commands are defined here
+
+*/
+
+// SET key value
 type SetCommand struct {
 	kv *KVStore
 }
@@ -24,6 +30,7 @@ func (p *SetCommand) Execute(args ...string) string {
 
 }
 
+// UNSET key
 type UnSetCommand struct {
 	kv *KVStore
 }
@@ -43,6 +50,7 @@ func (p *UnSetCommand) Execute(args ...string) string {
 
 }
 
+// GET key
 type GetCommand struct {
 	kv *KVStore
 }
@@ -61,6 +69,7 @@ func (p *GetCommand) Execute(args ...string) string {
 
 }
 
+// BEGIN
 type Begin struct {
 	kv *KVStore
 }
@@ -76,6 +85,7 @@ func (p *Begin) Execute(args ...string) string {
 	return ""
 }
 
+// ROLLBACK       # Rollback transaction
 type Roll struct {
 	kv *KVStore
 }
@@ -90,6 +100,7 @@ func (p *Roll) Execute(args ...string) string {
 	return p.kv.Rollback()
 }
 
+// NUMEQUALTO value   # Number of keys with value <value>
 type NumCommand struct {
 	kv *KVStore
 }
@@ -117,6 +128,7 @@ func (p *NumCommand) Execute(args ...string) string {
 	return fmt.Sprintf("%d", count)
 }
 
+// END                # End program
 type EndCommand struct {
 	kv *KVStore
 }
@@ -135,6 +147,7 @@ func (p *EndCommand) Execute(args ...string) string {
 	return ""
 }
 
+// COMMIT         # Commit transaction
 type CommitCommand struct {
 	kv *KVStore
 }

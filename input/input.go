@@ -30,7 +30,6 @@ func ProcessInput() {
 
 }
 
-
 func exe(e *cmdpattern.Exe, lineInput string) string {
 	tokens := strings.Fields(lineInput)
 
