@@ -9,6 +9,7 @@ import (
 	"strings"
 )
 
+// Loop through, process input line by line
 func ProcessInput() {
 
 	e := kvstore.RegisterKVStoreCommands()
@@ -23,13 +24,18 @@ func ProcessInput() {
 			return
 		}
 
+		// Here commands get executed
 		fmt.Printf("%s\n", exe(e, command))
 	}
 
 }
 
+
 func exe(e *cmdpattern.Exe, lineInput string) string {
 	tokens := strings.Fields(lineInput)
+
+	// Tokens contain command and arguments
+	// So commands take 1 or more arguments
 	switch {
 	case len(tokens) <= 0:
 		return ""

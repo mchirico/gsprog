@@ -1,5 +1,10 @@
 package cmdpattern
 
+/*
+	Basic Command Pattern
+*/
+
+
 type Command interface {
 	Execute(...string) string
 }
